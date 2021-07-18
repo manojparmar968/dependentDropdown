@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 
+     <!-- Site Metas -->
+    <title>GoodWEB Solutions - Responsive HTML5 Landing Page Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{%static 'web_webapp/images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{%static 'web_webapp/images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static 'web_webapp/css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{%static 'web_webapp/style.css' %}">  
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{%static 'web_webapp/css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{%static 'web_webapp/css/custom.css' %}">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="{%static 'web_webapp/js/modernizer.js' %}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <div class="loader">
+			<div class="loader__bar"></div>
+			<div class="loader__bar"></div>
+			<div class="loader__bar"></div>
+			<div class="loader__bar"></div>
+			<div class="loader__bar"></div>
+			<div class="loader__ball"></div>
+		</div>
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+    
+	<div class="top-bar">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<div class="left-top">
+						<div class="email-box">
+							<a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> youremail@gmail.com</a>
+						</div>
+						<div class="phone-box">
+							<a href="tel:1234567890"><i class="fa fa-phone" aria-hidden="true"></i> +1 234 567 890</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<div class="right-top">
+						<div class="social-box">
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-rss-square" aria-hidden="true"></i></a></li>
+							<ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <header class="header header_style_01">
+        <nav class="megamenu navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="{%static 'web_webapp/images/logos/logo.png' %}" alt="image"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+						<li><a class="active" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>SignUp</h3>
+                {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}
+                    <div  {% if message.tags %}  class={{message.tags}} style="color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;padding:20px"{% endif %}> {{ message }} </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="contact_form">
+                        <div id="message"></div>
+                        <form id="signup" class="row" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if error %}
+                                <div class="alert alert-danger" role="alert">{{error}}</div>
+                            {% endif %}
+                            <fieldset class="row-fluid">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Your Name" id="name" name="name" value="{{values.name}}">
+                                    <div class="warning_text" id="name-error"></div>
+                                </div><div class="warning_text" id="name_error"></div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <label class="sr-only">country code</label>
+                                    <select name="countrycode" id="countrycode" class="selectpicker form-control" data-style="btn-white">
+                                        <option value="+91">+91</option>
+                                        <option value="+922">+922</option>
+                                        <option value="+222">+222</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="number" name="mobile_number" id="mobile_number" value="{{values.mobile_number}}" class="form-control" placeholder="Mobile Number" >
+                                    <div class="warning_text" id="phone-error"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" name="dob" class="form-control" placeholder="DOB DD-MM-YYYY" >
+                                    <div class="warning_text" id="dob-error"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="email" name="email" id="email" value="{{values.email}}"  class="form-control" placeholder="Your Email" >
+                                    <div class="warning_text" id="email-error"></div>
+                                    <div class="warning_text" id="">{{email_error}}</div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="password" name="password" id="password" minlength="6"  class="form-control" placeholder="Your Password" >
+                                    <div class="warning_text" id="password-error"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 align-items-center">
+                                    <input type="password" name="confirm_password" id="confirm_password"  class="form-control" placeholder="confirm Your Password" >
+                                    <a class="eye-icon" id="showcpass"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                    <div class="warning_text" id="confirm-password-error"></div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                                    <button type="submit"  id="register-btn" class="register-btn form-control shadow-none outline-none">SIGN UP</button>
+                                    <button type="submit" id="register-btn" class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit</button>
+                                </div>
+                            </fieldset><br>
+                            <div class="mx-auto inner-register text-center my-4" style="padding:0 15px 0 15px;">
+								<a href= ""><h5>ALREADY HAVE AN ACCOUNT? LOGIN HERE</h5></a>
+							</div>
+                        </form>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <img src="{%static 'web_webapp/images/logos/logo-2.png' %}" alt="" />
+                        </div>
+                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+                        <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+				<div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>Pages</h3>
+                        </div>
+
+                        <ul class="footer-links hov">
+                            <li><a href="#">Home <span class="icon icon-arrow-right2"></span></a></li>
+							<li><a href="#">Blog <span class="icon icon-arrow-right2"></span></a></li>
+							<li><a href="#">Pricing <span class="icon icon-arrow-right2"></span></a></li>
+							<li><a href="#">About <span class="icon icon-arrow-right2"></span></a></li>
+							<li><a href="#">Faq <span class="icon icon-arrow-right2"></span></a></li>
+							<li><a href="#">Contact <span class="icon icon-arrow-right2"></span></a></li>
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+				
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="footer-distributed widget clearfix">
+                        <div class="widget-title">
+                            <h3>Subscribe</h3>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which one know this tricks.</p>
+                        </div>
+						
+						<div class="footer-right">
+							<form method="get" action="#">
+								<input placeholder="Subscribe our newsletter.." name="search">
+								<i class="fa fa-envelope-o"></i>
+							</form>
+						</div>                        
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </footer><!-- end footer -->
+
+    <div class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-left">                   
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">GoodWEB</a> Design By : 
+					<a href="https://html.design/">html design</a></p>
+                </div>
+
+                
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+    <!-- signup validation -->
+    
+    <!-- ALL JS FILES -->
+    <script src="{%static 'web_webapp/js/all.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{%static 'web_webapp/js/custom.js' %}"></script>
+    <script src="{%static 'web_webapp/js/portfolio.js' %}"></script>
+    <script src="{%static 'web_webapp/js/hoverdir.js' %}"></script>
+    <!-- form vlidation -->
+    <script>
+        const name = document.getElementById('name')
+
+        function showError(input, name_error) {
+            const formControl = input.parentElement;
+            formControl.innerText = name_error;
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('clicked');
+            if (name.value === '') {
+                showError(name, 'name is required');
+            }
+        });
+    </script>
+
+    <script>
+        // const name = document.getElementById('name')
+        $(document).ready(function(){
+            $("#name").on('input', function(){
+                if ($(this).val() == "") {
+                    $("#name-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter your name");
+                }
+                else{
+                    $("#name-error").empty();
+                }
+            });
+
+            $("#mobile_number").on('input', function(){
+                if( $(this).val() === '') {
+                    $("#phone-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a valid mobile number");
+                }
+                else{
+                    $("#phone-error").empty();
+                }
+            });
+            $("#email").on('input', function(){
+                if( !isValidEmailAddress($(this).val()) || $(this).val() == '') {
+                    $("#email-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a valid email address");
+                }
+                else{
+                    $("#email-error").empty();
+                }
+            });
+            $("#password").on('input', function(){
+                if ($(this).val() == "" || $(this).val().length<6) {
+                    $("#password-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Password requires a minimum of 6 characters");
+                }
+                else {
+                    $("#password-error").empty();
+                }
+
+                // var password = $("#password").val();
+
+                // if (password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@%!])[0-9a-zA-Z@%!]{6,}$/)) {
+                //     $("#password-error").empty();
+                // }
+                // else {
+                //     $("#password-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Password doesn't meet security requirements");
+                // }
+            });
+        });
+
+        function validation() {
+            if ($('#name').val() == "") {
+                $("#name-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter your name");
+                return false;
+            }
+            else {
+                $("#name-error").empty();
+            }
+
+            if ($('#mobile_number').val() === "") {
+                $("#phone-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a valid mobile number");
+                return false;
+            }
+            else{
+                $("#phone-error").empty();
+            }
+
+            if($('#email').val() == ""){
+                $("#email-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a valid email address");
+                return false;
+            }
+            else {
+                $("#email-error").empty();
+
+            }
+            
+            if($('#password').val() == ""){
+                $("#password-error").html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Password requires a minimum of 6 characters");
+            }
+            
+            //console.log($('#datepicker').val());
+            $('#register-btn').prop("disabled", false);
+            return true
+        }
+
+        $(function () {
+            $('#signup').on('submit',function (e) {
+                e.preventDefault();
+                // alert ("This is a signup function!");
+                if (validation()){
+                    $.ajax({
+                        type: 'POST',
+                        url: '/signup/',
+                        data: $('#signup').serialize(),
+                        success: function (response) {
+                            if (response['message'] != "success"){
+                                console.log(response['message'])
+                                $('#'+response['id']).text(response['message']);
+                            }
+                            else{
+                                if ('{{id}}' != 'None'){
+                                    window.location = "/verify-otp/?id={{id}}";
+                                }
+                                else{
+                                    window.location = "/verify-otp/";
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+	    });
+        function isValidEmailAddress(emailAddress) {
+            var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+            return pattern.test(emailAddress);
+        }
+
+    </script>
+</body>
+</html>
